@@ -1,11 +1,35 @@
+<!DOCTYPE html>
 <html>
 
 <head>
-    <title>Hello World</title>
+    <title></title>
 </head>
 
 <body>
-    <h1>Hello World</h1>
+    <h1>Countdown</h1>
+    <ul id="countdowns"></ul>
+
+    <script>
+        var targetDates = [
+            new Date("May 15, 2023"),
+            new Date("August 15, 2023"),
+            new Date("December 11, 2023")
+        ];
+
+        var currentDate = new Date();
+        var countdowns = document.getElementById("countdowns");
+        countdowns.innerHTML = "";
+
+        for (var i = 0; i < targetDates.length; i++) {
+            var targetDate = targetDates[i];
+            var diff = targetDate - currentDate;
+            var days = Math.floor(diff / (1000 * 60 * 60 * 24));
+
+            var li = document.createElement("li");
+            li.innerHTML = days + " days left until " + targetDate.toDateString();
+            countdowns.appendChild(li);
+        }
+    </script>
 </body>
 
 </html>
